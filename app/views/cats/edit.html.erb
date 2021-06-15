@@ -1,0 +1,48 @@
+<h1>Edit Cat on List!</h1>
+
+<%= render 'form', cat: @cat, action: :edit %>
+
+<!--
+<form action="<%= cat_url(@cat) %>" method=post>
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="name">Name</label>
+  <input id="name" type="text" name="cat[name]" value="<%= @cat.name %>">
+  
+  <br><br>
+
+  <label for="birth_date">Birth Date</label>
+  <input id="birth_date" type="date" name="cat[birth_date]" value="<%= @cat.birth_date %>">
+  
+  <br><br>
+
+  <label for="color">Color</label>
+  <select id="color" name="cat[color]">
+    <option disabled>-- please select color --</option>
+    <option value="White" <%= @cat.color == "White" ? "selected" : "" %> >White</option>
+    <option value="Black" <%= @cat.color == "Black" ? "selected" : "" %> >Black</option>
+    <option value="Orange" <%= @cat.color == "Orange" ? "selected" : "" %> >Orange</option>
+  </select>
+  
+  <br><br>
+
+  <label for="sex">Sex</label><br>
+  <input id="male" type="radio" name="cat[sex]" value="M" <%= @cat.sex == "M" ? "checked" : "" %>>
+  <label for="male">Male</label><br>
+  <input id="female" type="radio" name="cat[sex]" value="F" <%= @cat.sex == "F" ? "checked" : "" %>>
+  <label for="female">Female</label>
+  
+  <br><br>
+
+  <label for="description">Description</label>
+  <textarea name="cat[description]">
+    <%= @cat.description %>
+  </textarea>
+  
+  
+  <br><br>
+
+  <input type="submit" value="Update Cat">
+
+</form>
+-->

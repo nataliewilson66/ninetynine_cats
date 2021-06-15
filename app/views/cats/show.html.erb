@@ -1,0 +1,52 @@
+<h1><%= @cat.name %></h1>
+
+<table>
+  <tr>
+    <th>Attribute</th>
+    <th>Value</th>
+  </tr>
+  <% [:age, :birth_date, :color, :sex].each do |attr_name| %>
+    <tr>
+      <td><%= attr_name.to_s.split('_').map(&:capitalize).join(' ') %></td>
+      <td><%= @cat.send(attr_name) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Description</h3>
+<p>
+  <%= @cat.description %>
+</p>
+
+<a href="<%= edit_cat_url(@cat) %>">Edit <%= @cat.name %></a>
+
+<h3>Rental Requests</h3>
+<table>
+  <tr>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Status</th>
+  </tr>
+  <% @requests.each do |req| %>
+    <tr>
+      <td><%= req.start_date %></td>
+      <td><%= req.end_date %></td>
+      <td>
+        <% if req.pending? %>
+          <form action="<%= approve_cat_rental_request_url(req) %>" method="post">
+            <input type="submit" value="Approve">
+          </form>
+          <form action="<%= deny_cat_rental_request_url(req) %>" method="post">
+            <input type="submit" value="Deny">
+          </form>
+        <% else %>
+          <%= req.status %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<form action="<%= new_cat_rental_request_url %>" method="get">
+  <input type="submit" value="File New Rental Request!">
+</form>
