@@ -23,16 +23,18 @@
 <h3>Rental Requests</h3>
 <table>
   <tr>
+    <th>Requester</th>
     <th>Start Date</th>
     <th>End Date</th>
     <th>Status</th>
   </tr>
   <% @requests.each do |req| %>
     <tr>
+      <td><%= req.requester.user_name %></td>
       <td><%= req.start_date %></td>
       <td><%= req.end_date %></td>
       <td>
-        <% if req.pending? %>
+        <% if req.pending? && current_user.owns_cat?(@cat) %>
           <form action="<%= approve_cat_rental_request_url(req) %>" method="post">
             <input type="submit" value="Approve">
           </form>

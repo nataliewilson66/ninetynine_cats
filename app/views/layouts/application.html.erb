@@ -1,4 +1,37 @@
 <!DOCTYPE html>
+<header>
+<% if !current_user.nil? %>
+  <h5>
+    <p>Logged in as: <%= current_user.user_name %></p>
+    <p>
+      <form action="<%= session_url %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" value="delete" name="_method">
+        <input type="submit" value="Logout">
+      </form>
+    </p>
+  </h5>
+<% else %>
+  <h5>
+    <p>
+      <form action="<%= new_session_url %>" method="GET">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" value="new" name="_method">
+        <input type="submit" value="User Login">
+      </form>
+    </p>
+    <p>
+      <form action="<%= new_user_url %>" method="GET">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" value="new" name="_method">
+        <input type="submit" value="New User">
+      </form>
+    </p>
+  </h5>
+
+<% end %>
+</header>
+
 <html>
   <head>
     <title>NinetynineCats</title>
