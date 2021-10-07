@@ -9,3 +9,7 @@
 <form action="<%= new_cat_url %>" method="get">
   <input type="submit" value="Add Cat!">
 </form>
+
+<%= content_for :footer do %>
+  <p>This is the cat index page.</p>
+<% end %>

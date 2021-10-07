@@ -1,10 +1,7 @@
 <h1>Create User!</h1>
 
 <form action="<%= users_url %>" method=POST>
-  <input 
-    type="hidden" 
-    name="authenticity_token" 
-    value="<%= form_authenticity_token %>">
+  <%= auth_token %>
 
   <label for="user_user_name">Username</label>
   <input type="text" 
@@ -24,3 +21,7 @@
 
   <input type="submit" value="Create User!">
 </form>
+
+<%= content_for :footer do %>
+  <p>This is the new user page.</p>
+<% end %>

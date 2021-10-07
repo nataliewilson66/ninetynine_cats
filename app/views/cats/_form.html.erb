@@ -7,6 +7,8 @@
 
 
 <form action="<%= action_url %>" method=post>
+  <%= auth_token %>
+
   <% if action == :edit %>
     <input type="hidden" name="_method" value="PATCH">
   <% end %>

@@ -2,6 +2,10 @@
 
 <%= render 'form', cat: @cat, action: :new %>
 
+<%= content_for :footer do %>
+  <p>This is the new cat page.</p>
+<% end %>
+
 <!--
 <form action="<%= cats_url %>" method=post>
   <label for="name">Name</label>

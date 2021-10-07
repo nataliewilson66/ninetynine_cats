@@ -5911,3 +5911,1220 @@ Processing by CatsController#edit as HTML
 Completed 200 OK in 68ms (Views: 24.5ms | ActiveRecord: 6.9ms | Allocations: 9809)
 
 
+Started GET "/cats" for ::1 at 2021-08-03 13:35:16 -0700
+  [1m[35m (9.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+SyntaxError - syntax error, unexpected tIDENTIFIER, expecting keyword_end
+    html = "<input type="hidden" name="authenticity_token" v...
+                         ^~~~~~
+/Users/nataliewilson/Desktop/App Academy Projects/ninetynine_cats/app/helpers/application_helper.rb:4: syntax error, unexpected tIDENTIFIER, expecting keyword_end
+...idden" name="authenticity_token" value="#{form_authenticity_...
+...             ^~~~~~~~~~~~~~~~~~:
+  app/helpers/application_helper.rb:4:in `'
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/cats_controller.rb:1:in `<top (required)>'
+
+Started POST "/__better_errors/120552bb4b1565c6/variables" for ::1 at 2021-08-03 13:35:18 -0700
+Started GET "/cats" for ::1 at 2021-08-03 13:36:15 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (8.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 84.9ms | Allocations: 8198)
+  [1m[36mUser Load (12.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JQ1MJ_-wOlqP-4PF9OUzpQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 167.5ms | Allocations: 23470)
+Completed 200 OK in 212ms (Views: 91.2ms | ActiveRecord: 88.9ms | Allocations: 30895)
+
+
+Started DELETE "/session" for ::1 at 2021-08-03 13:36:17 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JQ1MJ_-wOlqP-4PF9OUzpQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "drew_kreins"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "CMMblI4ZlbFKI33O-IDodQ"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Update (20.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "CMMblI4ZlbFKI33O-IDodQ"], ["updated_at", "2021-08-03 20:36:17.758104"], ["id", 4]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 64ms (ActiveRecord: 43.6ms | Allocations: 5653)
+
+
+Started GET "/session/new" for ::1 at 2021-08-03 13:36:17 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 218)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 5947)
+Completed 200 OK in 41ms (Views: 40.2ms | ActiveRecord: 0.0ms | Allocations: 6893)
+
+
+Started GET "/session/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 13:36:21 -0700
+Processing by SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 74)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 5795)
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 0.0ms | Allocations: 6204)
+
+
+Started POST "/session" for ::1 at 2021-08-03 13:36:31 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"natalie", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "natalie"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_by_credentials'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.2ms | Allocations: 74)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 5807)
+Completed 200 OK in 273ms (Views: 21.9ms | ActiveRecord: 1.7ms | Allocations: 7126)
+
+
+Started POST "/session" for ::1 at 2021-08-03 13:36:39 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"nwilson", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "nwilson"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_by_credentials'
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 240ms (ActiveRecord: 1.6ms | Allocations: 1071)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 13:36:39 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1000)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 7368)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 2.2ms | Allocations: 7787)
+
+
+Started GET "/cats/new" for ::1 at 2021-08-03 13:37:02 -0700
+Processing by CatsController#new as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering cats/new.html.erb within layouts/application
+  Rendered cats/_form.html.erb (Duration: 2.3ms | Allocations: 557)
+  Rendered cats/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 988)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 6672)
+Completed 200 OK in 27ms (Views: 20.3ms | ActiveRecord: 1.8ms | Allocations: 7981)
+
+
+Started POST "/cats" for ::1 at 2021-08-03 13:37:45 -0700
+Processing by CatsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "cat"=>{"name"=>"Barack Obama", "birth_date"=>"2021-08-03", "color"=>"White", "sex"=>"M", "description"=>"    \r\n  named after our former president"}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:30:in `create'
+  [1m[36mCat Create (18.4ms)[0m  [1m[32mINSERT INTO "cats" ("birth_date", "color", "name", "sex", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["birth_date", "2021-08-03"], ["color", "White"], ["name", "Barack Obama"], ["sex", "M"], ["description", "    \r\n  named after our former president"], ["created_at", "2021-08-03 20:37:45.919723"], ["updated_at", "2021-08-03 20:37:45.919723"], ["user_id", 1]]
+  ↳ app/controllers/cats_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:30:in `create'
+Redirected to http://localhost:3000/cats/4
+Completed 302 Found in 59ms (ActiveRecord: 22.8ms | Allocations: 10755)
+
+
+Started GET "/cats/4" for ::1 at 2021-08-03 13:37:45 -0700
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCat Load (3.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (12.3ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY "cat_rental_requests"."start_date" ASC[0m  [["cat_id", 4]]
+  ↳ app/views/cats/show.html.erb:31
+  Rendered cats/show.html.erb within layouts/application (Duration: 30.4ms | Allocations: 6212)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 45.2ms | Allocations: 12480)
+Completed 200 OK in 64ms (Views: 32.8ms | ActiveRecord: 20.9ms | Allocations: 15950)
+
+
+Started GET "/cats/" for ::1 at 2021-08-03 13:37:54 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 1025)
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.8ms | Allocations: 7389)
+Completed 200 OK in 36ms (Views: 30.4ms | ActiveRecord: 4.3ms | Allocations: 7814)
+
+
+Started GET "/cats/" for ::1 at 2021-08-03 13:50:54 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 50.7ms | Allocations: 4659)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 82.8ms | Allocations: 11663)
+Completed 200 OK in 99ms (Views: 95.3ms | ActiveRecord: 28.9ms | Allocations: 12836)
+
+
+Started GET "/cats/" for ::1 at 2021-08-03 16:12:15 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 88.1ms | Allocations: 4654)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 217.0ms | Allocations: 11640)
+Completed 200 OK in 242ms (Views: 232.2ms | ActiveRecord: 50.9ms | Allocations: 12807)
+
+
+Started GET "/cats/1" for ::1 at 2021-08-03 16:12:17 -0700
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (5.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (5.9ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY "cat_rental_requests"."start_date" ASC[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:31
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  Rendered cats/show.html.erb within layouts/application (Duration: 123.2ms | Allocations: 16892)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 140.7ms | Allocations: 23166)
+Completed 200 OK in 159ms (Views: 116.6ms | ActiveRecord: 31.6ms | Allocations: 24645)
+
+
+Started GET "/cat_rental_requests/new" for ::1 at 2021-08-03 16:12:20 -0700
+Processing by CatRentalRequestsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cat_rental_requests/new.html.erb within layouts/application
+  [1m[36mCat Load (1.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cat_rental_requests/new.html.erb:9
+  Rendered cat_rental_requests/new.html.erb within layouts/application (Duration: 7.1ms | Allocations: 1262)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 26.7ms | Allocations: 7593)
+Completed 200 OK in 31ms (Views: 25.6ms | ActiveRecord: 4.2ms | Allocations: 8628)
+
+
+Started GET "/cats/1" for ::1 at 2021-08-03 16:12:23 -0700
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (1.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (2.4ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY "cat_rental_requests"."start_date" ASC[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:31
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  Rendered cats/show.html.erb within layouts/application (Duration: 21.4ms | Allocations: 4589)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 43.1ms | Allocations: 10961)
+Completed 200 OK in 50ms (Views: 35.4ms | ActiveRecord: 9.7ms | Allocations: 12174)
+
+
+Started GET "/cats/1/edit" for ::1 at 2021-08-03 16:12:25 -0700
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCat Load (1.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."user_id" = $1 AND "cats"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:39:in `edit'
+Completed 404 Not Found in 31ms (ActiveRecord: 4.1ms | Allocations: 6718)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find Cat with 'id'=1 [WHERE "cats"."user_id" = $1]:
+  app/controllers/cats_controller.rb:39:in `edit'
+
+Started POST "/__better_errors/60d4e5fdca77e2b7/variables" for ::1 at 2021-08-03 16:12:25 -0700
+Started GET "/cats/1" for ::1 at 2021-08-03 16:12:31 -0700
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCat Load (1.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (2.6ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY "cat_rental_requests"."start_date" ASC[0m  [["cat_id", 1]]
+  ↳ app/views/cats/show.html.erb:31
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/cats/show.html.erb:33
+  Rendered cats/show.html.erb within layouts/application (Duration: 21.8ms | Allocations: 4583)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 38.8ms | Allocations: 10952)
+Completed 200 OK in 49ms (Views: 32.5ms | ActiveRecord: 8.9ms | Allocations: 12164)
+
+
+Started GET "/cats/" for ::1 at 2021-08-03 16:12:35 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (5.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 1146)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 29.4ms | Allocations: 7513)
+Completed 200 OK in 32ms (Views: 24.0ms | ActiveRecord: 6.8ms | Allocations: 7945)
+
+
+Started GET "/cats/4" for ::1 at 2021-08-03 16:12:36 -0700
+Processing by CatsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mCat Load (1.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:11:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering cats/show.html.erb within layouts/application
+  [1m[36mCatRentalRequest Load (1.5ms)[0m  [1m[34mSELECT "cat_rental_requests".* FROM "cat_rental_requests" WHERE "cat_rental_requests"."cat_id" = $1 ORDER BY "cat_rental_requests"."start_date" ASC[0m  [["cat_id", 4]]
+  ↳ app/views/cats/show.html.erb:31
+  Rendered cats/show.html.erb within layouts/application (Duration: 6.3ms | Allocations: 939)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 34.8ms | Allocations: 7307)
+Completed 200 OK in 46ms (Views: 32.8ms | ActiveRecord: 6.9ms | Allocations: 9104)
+
+
+Started GET "/cats/4/edit" for ::1 at 2021-08-03 16:12:39 -0700
+Processing by CatsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mCat Load (2.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats" WHERE "cats"."user_id" = $1 AND "cats"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/cats_controller.rb:39:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering cats/edit.html.erb within layouts/application
+  Rendered cats/_form.html.erb (Duration: 2.5ms | Allocations: 550)
+  Rendered cats/edit.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1209)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.6ms | Allocations: 6899)
+Completed 200 OK in 42ms (Views: 23.3ms | ActiveRecord: 4.3ms | Allocations: 9862)
+
+
+Started DELETE "/session" for ::1 at 2021-08-03 16:33:31 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "-qABTZ3rjdMP2DllJeYqAA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (3.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "nwilson"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "C5BlQublUxzQKRMWXLatUw"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Update (21.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "C5BlQublUxzQKRMWXLatUw"], ["updated_at", "2021-08-03 23:33:31.795541"], ["id", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 113ms (ActiveRecord: 66.7ms | Allocations: 14063)
+
+
+Started GET "/session/new" for ::1 at 2021-08-03 16:33:31 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 263)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.3ms | Allocations: 6394)
+Completed 200 OK in 26ms (Views: 24.9ms | ActiveRecord: 0.0ms | Allocations: 7561)
+
+
+Started GET "/users/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 16:33:34 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 292)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.1ms | Allocations: 5983)
+Completed 200 OK in 30ms (Views: 28.8ms | ActiveRecord: 0.0ms | Allocations: 6978)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:33:51 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"veronica_lu", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (3.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "veronica_lu"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "YTavLOWEH6oDD0PqMxgAfA"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (12.6ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "veronica_lu"], ["password_digest", "$2a$12$fXP854MS7tOBNUBq/17SoeLGRBUJ.P/XWK.foewmV3MIguKWaoAZO"], ["session_token", "YTavLOWEH6oDD0PqMxgAfA"], ["created_at", "2021-08-03 23:33:51.877695"], ["updated_at", "2021-08-03 23:33:51.877695"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+UserMailer#welcome_email: processed outbound mail in 2.7ms
+Completed 500 Internal Server Error in 320ms (ActiveRecord: 19.3ms | Allocations: 20741)
+
+
+
+ArgumentError - Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true:
+  app/mailers/user_mailer.rb:6:in `welcome_email'
+  app/controllers/users_controller.rb:15:in `create'
+
+Started POST "/__better_errors/0d4ada204ce8d049/variables" for ::1 at 2021-08-03 16:33:52 -0700
+Started GET "/cats" for ::1 at 2021-08-03 16:34:42 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (4.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 87.1ms | Allocations: 7397)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 151.1ms | Allocations: 13091)
+Completed 200 OK in 162ms (Views: 92.3ms | ActiveRecord: 63.2ms | Allocations: 15627)
+
+
+Started GET "/users/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 16:34:45 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 87)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 5778)
+Completed 200 OK in 42ms (Views: 16.1ms | ActiveRecord: 8.6ms | Allocations: 12089)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:34:52 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"veronica_lu", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (4.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "veronica_lu"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "vbVMJ-rSwVNJES6BuW5lPg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 83)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 5743)
+Completed 200 OK in 294ms (Views: 13.6ms | ActiveRecord: 8.9ms | Allocations: 11446)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:35:04 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"veronica_lu", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "veronica_lu"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "vDfuGO-BsBksd0bsKMBOrw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 89)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 5758)
+Completed 200 OK in 301ms (Views: 11.4ms | ActiveRecord: 15.6ms | Allocations: 17407)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:35:41 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"pdasilva", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "pdasilva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "7DBPKpQet3d8IcoD-nDrKQ"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "pdasilva"], ["password_digest", "$2a$12$1AxGGAQkdC6TVMDP8H5iUeUZaPihsgPFemgg7fU1cjQ8ltCpovJPi"], ["session_token", "7DBPKpQet3d8IcoD-nDrKQ"], ["created_at", "2021-08-03 23:35:41.430336"], ["updated_at", "2021-08-03 23:35:41.430336"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+UserMailer#welcome_email: processed outbound mail in 10.3ms
+Completed 500 Internal Server Error in 286ms (ActiveRecord: 8.2ms | Allocations: 16544)
+
+
+
+NoMethodError - undefined method `default' for #<UserMailer:0x007fc4b379cf78>:
+  app/mailers/user_mailer.rb:7:in `welcome_email'
+  app/controllers/users_controller.rb:15:in `create'
+
+Started POST "/__better_errors/79a5630fc38a2189/variables" for ::1 at 2021-08-03 16:35:41 -0700
+Started GET "/users" for ::1 at 2021-08-03 16:36:17 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/cats" for ::1 at 2021-08-03 16:36:24 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 34.3ms | Allocations: 6856)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 63.6ms | Allocations: 12550)
+Completed 200 OK in 73ms (Views: 51.0ms | ActiveRecord: 14.5ms | Allocations: 14699)
+
+
+Started GET "/users/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 16:36:25 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 87)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | Allocations: 5778)
+Completed 200 OK in 50ms (Views: 18.5ms | ActiveRecord: 8.6ms | Allocations: 12069)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:36:31 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"pdasilva", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "pdasilva"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "abWENB8-7jzStfFlw9lcmw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 83)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 5743)
+Completed 200 OK in 308ms (Views: 29.5ms | ActiveRecord: 6.8ms | Allocations: 11334)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:36:50 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"smillington", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "smillington"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "t5sjNdGNUFLJDTc5Tu_www"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (5.0ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "smillington"], ["password_digest", "$2a$12$8JCKc9bgS9HzooO/qw4fRegUBjiY4ORf3Nw4jRvMryoOgb0OITxXS"], ["session_token", "t5sjNdGNUFLJDTc5Tu_www"], ["created_at", "2021-08-03 23:36:51.063517"], ["updated_at", "2021-08-03 23:36:51.063517"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 3.0ms | Allocations: 185)
+  Rendered layout layouts/mailer.html.erb (Duration: 4.2ms | Allocations: 391)
+UserMailer#welcome_email: processed outbound mail in 23.4ms
+Delivered mail 6109d31328a3d_1738a3fe259baea20224e6@Natalies-MacBook-Air.local.mail (37.7ms)
+Date: Tue, 03 Aug 2021 16:36:51 -0700
+From: everybody@appacademy.io
+To: smillington
+Message-ID: <6109d31328a3d_1738a3fe259baea20224e6@Natalies-MacBook-Air.local.mail>
+Subject: Welcome to 99Cats!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <h1>Welcome to 99Cats, smillington</h1>
+      <p>
+        You have successfully signed up to 99cats.com. <br>
+      </p>
+      <p>
+        To login to the site, just follow this link: https://localhost:3000/cats.
+      </p>
+      <p>
+        Thanks for joining, have a great day!
+      </p>
+  </body>
+</html>
+  </body>
+</html>
+
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 380ms (ActiveRecord: 13.2ms | Allocations: 19536)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 16:36:51 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1027)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "t5sjNdGNUFLJDTc5Tu_www"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 7522)
+Completed 200 OK in 25ms (Views: 20.0ms | ActiveRecord: 3.5ms | Allocations: 7940)
+
+
+Started DELETE "/session" for ::1 at 2021-08-03 16:37:28 -0700
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "t5sjNdGNUFLJDTc5Tu_www"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "smillington"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "_cobvylALbNE6nJJNZu1MA"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Update (2.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "_cobvylALbNE6nJJNZu1MA"], ["updated_at", "2021-08-03 23:37:28.788847"], ["id", 7]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 74ms (ActiveRecord: 21.0ms | Allocations: 15324)
+
+
+Started GET "/session/new" for ::1 at 2021-08-03 16:37:28 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 554)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 8430)
+Completed 200 OK in 59ms (Views: 58.0ms | ActiveRecord: 0.0ms | Allocations: 13982)
+
+
+Started GET "/users/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 16:37:30 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 292)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 5985)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms | Allocations: 6997)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:37:40 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"cdalbow", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "cdalbow"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "XB6JXSB6uthiDbXmwe39Xw"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 84)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 5745)
+Completed 200 OK in 292ms (Views: 9.3ms | ActiveRecord: 4.1ms | Allocations: 15600)
+
+
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/users" for ::1 at 2021-08-03 16:38:14 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"mdunne", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "mdunne"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JgocgZAa853ByVHK0tJsbQ"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "mdunne"], ["password_digest", "$2a$12$77VCORInsWGNSfm8Ynwg0uwDMkk/tvcvKFw7T/E7tsn6DjnU9mhFO"], ["session_token", "JgocgZAa853ByVHK0tJsbQ"], ["created_at", "2021-08-03 23:38:15.019621"], ["updated_at", "2021-08-03 23:38:15.019621"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 1.6ms | Allocations: 185)
+  Rendered layout layouts/mailer.html.erb (Duration: 3.4ms | Allocations: 393)
+UserMailer#welcome_email: processed outbound mail in 13.3ms
+Delivered mail 6109d36734f6b_17af73fc1d6fafb5488f@Natalies-MacBook-Air.local.mail (31.6ms)
+Date: Tue, 03 Aug 2021 16:38:15 -0700
+From: everybody@appacademy.io
+To: mdunne
+Message-ID: <6109d36734f6b_17af73fc1d6fafb5488f@Natalies-MacBook-Air.local.mail>
+Subject: Welcome to 99Cats!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <h1>Welcome to 99Cats, mdunne</h1>
+      <p>
+        You have successfully signed up to 99cats.com. <br>
+      </p>
+      <p>
+        To login to the site, just follow this link: https://localhost:3000/cats.
+      </p>
+      <p>
+        Thanks for joining, have a great day!
+      </p>
+  </body>
+</html>
+  </body>
+</html>
+
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 475ms (ActiveRecord: 6.3ms | Allocations: 67997)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 16:38:15 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 34.8ms | Allocations: 7223)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JgocgZAa853ByVHK0tJsbQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 65.0ms | Allocations: 13557)
+Completed 200 OK in 87ms (Views: 57.5ms | ActiveRecord: 15.4ms | Allocations: 16600)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 16:38:37 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 1031)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 61.8ms | Allocations: 6773)
+Completed 200 OK in 64ms (Views: 60.6ms | ActiveRecord: 2.3ms | Allocations: 7137)
+
+
+Started GET "/users/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 16:38:43 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 86)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 5819)
+Completed 200 OK in 22ms (Views: 21.3ms | ActiveRecord: 0.0ms | Allocations: 6252)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:38:51 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"kblach", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "kblach"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8YIdycfccqnacS8H_f-9yQ"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (3.1ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "kblach"], ["password_digest", "$2a$12$fP1kg8oavwxR9rrmcXDyFerbcZkvBLtZvOwnR0peKgwhMpFE7y2BW"], ["session_token", "8YIdycfccqnacS8H_f-9yQ"], ["created_at", "2021-08-03 23:38:52.162248"], ["updated_at", "2021-08-03 23:38:52.162248"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 41)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 133)
+UserMailer#welcome_email: processed outbound mail in 2.7ms
+Delivered mail 6109d38c2aac2_17af73fc1d6fafd5c950@Natalies-MacBook-Air.local.mail (7.1ms)
+Date: Tue, 03 Aug 2021 16:38:52 -0700
+From: everybody@appacademy.io
+To: kblach
+Message-ID: <6109d38c2aac2_17af73fc1d6fafd5c950@Natalies-MacBook-Air.local.mail>
+Subject: Welcome to 99Cats!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <h1>Welcome to 99Cats, kblach</h1>
+      <p>
+        You have successfully signed up to 99cats.com. <br>
+      </p>
+      <p>
+        To login to the site, just follow this link: https://localhost:3000/cats.
+      </p>
+      <p>
+        Thanks for joining, have a great day!
+      </p>
+  </body>
+</html>
+  </body>
+</html>
+
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 291ms (ActiveRecord: 7.5ms | Allocations: 11618)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 16:38:52 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.9ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 1023)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "8YIdycfccqnacS8H_f-9yQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 32.5ms | Allocations: 7391)
+Completed 200 OK in 35ms (Views: 30.2ms | ActiveRecord: 3.6ms | Allocations: 7807)
+
+
+Started DELETE "/session" for ::1 at 2021-08-03 16:39:07 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "JgocgZAa853ByVHK0tJsbQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "mdunne"], ["id", 8], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "bUUYQMU1kd7EpnVxsnC0HA"], ["id", 8], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "bUUYQMU1kd7EpnVxsnC0HA"], ["updated_at", "2021-08-03 23:39:07.883688"], ["id", 8]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 31ms (ActiveRecord: 10.8ms | Allocations: 5168)
+
+
+Started GET "/session/new" for ::1 at 2021-08-03 16:39:07 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 86)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 5818)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.0ms | Allocations: 6225)
+
+
+Started GET "/users/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 16:41:04 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 81)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.1ms | Allocations: 5809)
+Completed 200 OK in 40ms (Views: 37.6ms | ActiveRecord: 0.0ms | Allocations: 6247)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:41:18 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"colinwilson", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "colinwilson"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "rrOvJlYq_XP11uiMe46Sqg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (3.9ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "colinwilson"], ["password_digest", "$2a$12$PrmFJEa/OeV81CJa9znGWus8cMgaNV1XqEH4v2yJoNs.byVSoqXja"], ["session_token", "rrOvJlYq_XP11uiMe46Sqg"], ["created_at", "2021-08-03 23:41:18.623415"], ["updated_at", "2021-08-03 23:41:18.623415"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.2ms | Allocations: 41)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.5ms | Allocations: 133)
+UserMailer#welcome_email: processed outbound mail in 6.0ms
+Delivered mail 6109d41e9d020_17af73fc1d6fafb5410e8@Natalies-MacBook-Air.local.mail (16.8ms)
+Date: Tue, 03 Aug 2021 16:41:18 -0700
+From: everybody@appacademy.io
+To: colinwilson
+Message-ID: <6109d41e9d020_17af73fc1d6fafb5410e8@Natalies-MacBook-Air.local.mail>
+Subject: Welcome to 99Cats!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <h1>Welcome to 99Cats, colinwilson</h1>
+      <p>
+        You have successfully signed up to 99cats.com. <br>
+      </p>
+      <p>
+        To login to the site, just follow this link: https://localhost:3000/cats.
+      </p>
+      <p>
+        Thanks for joining, have a great day!
+      </p>
+  </body>
+</html>
+  </body>
+</html>
+
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 291ms (ActiveRecord: 10.0ms | Allocations: 11609)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 16:41:18 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 61.5ms | Allocations: 1023)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "rrOvJlYq_XP11uiMe46Sqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 118.6ms | Allocations: 7395)
+Completed 200 OK in 131ms (Views: 118.4ms | ActiveRecord: 4.7ms | Allocations: 7813)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 16:42:38 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.8ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 1023)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "rrOvJlYq_XP11uiMe46Sqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 39.7ms | Allocations: 7391)
+Completed 200 OK in 46ms (Views: 37.2ms | ActiveRecord: 4.5ms | Allocations: 7809)
+
+
+Started DELETE "/session" for ::1 at 2021-08-03 16:42:40 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "rrOvJlYq_XP11uiMe46Sqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (5.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "colinwilson"], ["id", 10], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (4.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "hhR3tDxsT10SVKQ7UwiiJQ"], ["id", 10], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Update (2.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "hhR3tDxsT10SVKQ7UwiiJQ"], ["updated_at", "2021-08-03 23:42:40.406981"], ["id", 10]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 62ms (ActiveRecord: 29.1ms | Allocations: 5189)
+
+
+Started GET "/session/new" for ::1 at 2021-08-03 16:42:40 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 81)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 5809)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.0ms | Allocations: 6216)
+
+
+Started GET "/users/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 16:44:45 -0700
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 3.3ms | Allocations: 601)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.8ms | Allocations: 8441)
+Completed 200 OK in 104ms (Views: 48.5ms | ActiveRecord: 12.4ms | Allocations: 19980)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:45:01 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"francesca", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "francesca"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2TeGWTcf3ctbku-HpX-BWg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "francesca"], ["password_digest", "$2a$12$ALrBhNktb0UIKjFOjbLGxuGnu1sZgm6zlNYHjOpXdS13K1srW6vXm"], ["session_token", "2TeGWTcf3ctbku-HpX-BWg"], ["created_at", "2021-08-03 23:45:01.667539"], ["updated_at", "2021-08-03 23:45:01.667539"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 1.8ms | Allocations: 185)
+  Rendered layout layouts/mailer.html.erb (Duration: 3.0ms | Allocations: 393)
+UserMailer#welcome_email: processed outbound mail in 11.8ms
+Delivered mail 6109d4fdc6e5c_17c003ff263bf790413412@Natalies-MacBook-Air.local.mail (23.5ms)
+Date: Tue, 03 Aug 2021 16:45:01 -0700
+From: everybody@appacademy.io
+To: francesca
+Message-ID: <6109d4fdc6e5c_17c003ff263bf790413412@Natalies-MacBook-Air.local.mail>
+Subject: Welcome to 99Cats!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+      <h1>Welcome to 99Cats, francesca</h1>
+      <p>
+        You have successfully signed up to 99cats.com. <br>
+      </p>
+      <p>
+        To login to the site, just follow this link: https://localhost:3000/cats.
+      </p>
+      <p>
+        Thanks for joining, have a great day!
+      </p>
+  </body>
+</html>
+  </body>
+</html>
+
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 421ms (ActiveRecord: 8.0ms | Allocations: 57438)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 16:45:01 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (2.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 40.3ms | Allocations: 7262)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2TeGWTcf3ctbku-HpX-BWg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 68.7ms | Allocations: 13940)
+Completed 200 OK in 106ms (Views: 71.2ms | ActiveRecord: 14.3ms | Allocations: 16983)
+
+
+Started DELETE "/session" for ::1 at 2021-08-03 16:47:02 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "2TeGWTcf3ctbku-HpX-BWg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (2.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["user_name", "francesca"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "oSj12-ut__nMy1gcgSVKpg"], ["id", 11], ["LIMIT", 1]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mUser Update (2.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "oSj12-ut__nMy1gcgSVKpg"], ["updated_at", "2021-08-03 23:47:02.286046"], ["id", 11]]
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:30:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 39ms (ActiveRecord: 11.8ms | Allocations: 5310)
+
+
+Started GET "/session/new" for ::1 at 2021-08-03 16:47:02 -0700
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 261)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.1ms | Allocations: 6392)
+Completed 200 OK in 36ms (Views: 34.9ms | ActiveRecord: 0.0ms | Allocations: 7556)
+
+
+Started GET "/users/new?authenticity_token=[FILTERED]&_method=new" for ::1 at 2021-08-03 16:47:04 -0700
+Processing by UsersController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 285)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.8ms | Allocations: 6017)
+Completed 200 OK in 49ms (Views: 47.1ms | ActiveRecord: 0.0ms | Allocations: 6976)
+
+
+Started POST "/users" for ::1 at 2021-08-03 16:47:10 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"user_name"=>"kyle", "password"=>"[FILTERED]"}}
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = $1 LIMIT $2[0m  [["user_name", "kyle"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "e77pdjTf9okaxfXRB-RR2A"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "kyle"], ["password_digest", "$2a$12$bsi70RjL4pgdCKCLO2U/Augf6Tq2s6r9By2w5xsguHO6hBoObgA0C"], ["session_token", "e77pdjTf9okaxfXRB-RR2A"], ["created_at", "2021-08-03 23:47:10.281453"], ["updated_at", "2021-08-03 23:47:10.281453"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 170)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.6ms | Allocations: 374)
+UserMailer#welcome_email: processed outbound mail in 5.9ms
+Delivered mail 6109d57e4802c_17c003ff263bf76d4135e4@Natalies-MacBook-Air.local.mail (9.4ms)
+Date: Tue, 03 Aug 2021 16:47:10 -0700
+From: everybody@appacademy.io
+To: kyle
+Message-ID: <6109d57e4802c_17c003ff263bf76d4135e4@Natalies-MacBook-Air.local.mail>
+Subject: Welcome to 99Cats!
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    
+<h1>Welcome to 99Cats, kyle</h1>
+<p>
+  You have successfully signed up to 99cats.com. <br>
+</p>
+<p>
+  To login to the site, just follow this link: https://localhost:3000/cats.
+</p>
+<p>
+  Thanks for joining, have a great day!
+</p>
+
+  </body>
+</html>
+
+Redirected to http://localhost:3000/cats
+Completed 302 Found in 283ms (ActiveRecord: 6.4ms | Allocations: 12349)
+
+
+Started GET "/cats" for ::1 at 2021-08-03 16:47:10 -0700
+Processing by CatsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering cats/index.html.erb within layouts/application
+  [1m[36mCat Load (1.9ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/views/cats/index.html.erb:4
+  Rendered cats/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 1242)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "e77pdjTf9okaxfXRB-RR2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `current_user'
+  Rendered layout layouts/application.html.erb (Duration: 34.6ms | Allocations: 7616)
+Completed 200 OK in 41ms (Views: 36.1ms | ActiveRecord: 3.3ms | Allocations: 8567)
+
+

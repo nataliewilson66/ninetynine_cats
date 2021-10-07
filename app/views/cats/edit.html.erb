@@ -2,6 +2,10 @@
 
 <%= render 'form', cat: @cat, action: :edit %>
 
+<%= content_for :footer do %>
+  <p>This is the edit cat page.</p>
+<% end %>
+
 <!--
 <form action="<%= cat_url(@cat) %>" method=post>
   <input type="hidden" name="_method" value="PATCH">
